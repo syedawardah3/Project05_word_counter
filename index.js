@@ -1,32 +1,36 @@
 #! /usr/bin/env node
 import inquirer from "inquirer";
 import chalk from "chalk";
-// Initialize the operation flag to false to enter the loop
-let operation = false;
-// Loop until operation becomes true
-while (!operation) {
-    // Prompt the user to enter a sentence
-    const answer = await inquirer.prompt({
+//word counter app
+console.log(chalk.redBright.underline.bold.italic("\t\t ****************************************WELCOME TO WARDAH SHAH WORD COUNTER APP***************************************************"));
+const answers = await inquirer.prompt([
+    {
         name: "sentence",
         type: "input",
-        message: chalk.cyan(`Enter your Sentence to count the number`)
-    });
-    // Get the sentence entered by the user
-    const sentence = answer.sentence;
-    // Check if the user entered a sentence
-    if (!sentence) {
-        // If no sentence is entered, display an error message
-        console.log(chalk.redBright("\nError: Please enter a sentence."));
+        message: chalk.magentaBright.bold.underline("\t\tEnter Your Sentence to Count the Words: ")
     }
-    else {
-        // If a sentence is entered, split it into words
-        const wordArray = sentence.trim().split(" ");
-        // Display the words in the sentence
-        console.log();
-        console.log(wordArray);
-        // Display the count of words in the sentence
-        console.log(chalk.yellow(`\nYour sentence word count is ${wordArray.length}`));
-        // Set operation to true to exit the loop
-        operation = true;
-    }
-}
+]);
+const response = answers.sentence.trim().split(" ");
+console.log(response);
+console.log(chalk.blueBright.bold.italic(`\t\t Your Word Count is ${response.length}`));
+//character counter app
+// console.log(chalk.redBright.underline.bold.italic("\t\t ****************************************WELCOME TO MY CHARACTER COUNTER APP***************************************************"))
+// function wordCounter (text:string) {
+//     let freeWhileSpace = text.replace(/\s/g,"");
+//     return freeWhileSpace.length;
+// }
+// async function startCounter (wordCounter:(text:string)=> number) {
+//     do{
+//         let result = await inquirer.prompt(
+//                 {
+//                     type:"input",
+//                     message:chalk.greenBright.bold("write your text..."),
+//                     name:"text"
+//                 }
+//         )
+//         console.log(chalk.overline.bold.underline.blueBright("Your words count is: "))
+//         console.log(chalk.yellowBright(wordCounter(result.text)));
+//     }
+//     while(true)
+// }
+//  startCounter(wordCounter);
